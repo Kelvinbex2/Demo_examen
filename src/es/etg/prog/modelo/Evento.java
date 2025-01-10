@@ -1,7 +1,5 @@
 package es.etg.prog.modelo;
 
-import es.etg.prog.factoria.FactoriaAsiento;
-
 public class Evento {
 
     private Asiento[][] asientos;
@@ -21,8 +19,9 @@ public class Evento {
     public void mostrar() {
         for (Asiento[] asiento : asientos) {
             for (Asiento silla : asiento) {
-                System.out.print(silla + "");
+                System.out.print(silla + " ");
             }
+            System.out.println();
 
         }
     }
@@ -32,6 +31,7 @@ public class Evento {
             for (int j = 0; j < asientos[i].length; j++) {
                 if (!asientos[i][j].ocupado) {
                     asientos[i][j].asignar(nombre, dni, edad);
+                    System.out.println("Asiento asignado " + asientos[i][j].id + " (Premium)");
                     return true;
                 }
 
@@ -41,24 +41,27 @@ public class Evento {
         return false;
     }
 
+    public boolean venderEntradas(int limite, String tipo, String nombre, String dni, int edad) throws Exception {
 
-    public boolean venderEntradas(int limite,String tipo,String nombre, String dni, int edad){
-        int entrada=0;
-
-        
-        try {
-            switch (tipo) {
-                case "p":
-                   
-                    break;
-            
-                default:
-                    break;
-            }
-        } catch (Exception e) {
-            // TODO: handle exception
+        if (limite <= 0) {
+            System.out.println("Solo tiene que ser mayor");
+            return false;
         }
-        return false;
+        int entrada = 0;
+        switch (tipo.toLowerCase()) {
+            case "p":
+                while (entrada < limite) {
+
+                    if (!indicarPremium(nombre, dni, edad)) {
+                        return false;
+                    }
+                    entrada++;
+                }
+
+                return true;
+            default:
+                return false;
+        }
 
     }
 }
