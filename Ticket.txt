@@ -1,0 +1,24 @@
+**********Ticket 1***********
+Nombre: f
+Dni: d
+Edad: 6
+Entradas Compardo: 6
+***************************
+
+
+**********Ticket 2***********
+Nombre: y
+Dni: rr
+Edad: 6
+Entradas Compardo: 8
+***************************
+
+
+**********Ticket 3***********
+Nombre: j
+Dni: g
+Edad: 8
+Entradas Compardo: 8
+***************************
+
+
