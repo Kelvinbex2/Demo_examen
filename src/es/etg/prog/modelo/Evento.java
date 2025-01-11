@@ -26,12 +26,14 @@ public class Evento {
         }
     }
 
-    public boolean indicarPremium(String nombre, String dni, int edad) {
+    public boolean indicarPremium(String nombre, String dni, int edad, int puntos) {
         for (int i = 0; i < asientos.length; i++) {
             for (int j = 0; j < asientos[i].length; j++) {
 
                 if (!asientos[i][j].ocupado) {
-                    asientos[i][j].asignar(nombre, dni, edad);
+                    puntos += 15;
+                    asientos[i][j].setPuntos(puntos);
+                    asientos[i][j].asignar(nombre, dni, edad, puntos);
                     System.out.println("Asiento asignado " + asientos[i][j].id + " a " + nombre + " (Premium)");
                     return true;
                 }
@@ -42,7 +44,8 @@ public class Evento {
 
     }
 
-    public boolean venderEntradas(int limite, String tipo, String nombre, String dni, int edad) throws Exception {
+    public boolean venderEntradas(int limite, String tipo, String nombre, String dni, int edad, int puntos)
+            throws Exception {
 
         if (limite <= 0) {
             System.out.println("Debe ser mayor que 0 ");
@@ -52,9 +55,9 @@ public class Evento {
         try {
             switch (tipo.toLowerCase()) {
                 case "p":
-
+                    
                     while (entradaVendidas < limite) {
-                        if (!indicarPremium(nombre, dni, edad)) {
+                        if (!indicarPremium(nombre, dni, edad, puntos)) {
                             return false;
                         }
                         entradaVendidas++;
@@ -70,5 +73,16 @@ public class Evento {
         }
 
         return false;
+    }
+
+    public int obtenerPuntos(String nombre, String dni) {
+        for (Asiento[] fila : asientos) {
+            for (Asiento asiento : fila) {
+                if (asiento.ocupado && asiento.nombre.equals(nombre) && asiento.dni.equals(dni)) {
+                    return asiento.puntos;
+                }
+            }
+        }
+        return 0;  
     }
 }

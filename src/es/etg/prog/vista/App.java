@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import es.etg.prog.entrada.Entrada;
+import es.etg.prog.modelo.Asiento;
 import es.etg.prog.modelo.Evento;
 
 public class App {
@@ -61,9 +62,11 @@ public class App {
         System.out.print("Limite: ");
         int limite = Entrada.leerInt();
 
-        if (evento.venderEntradas(limite, tipo, nombre, dni, edad)) {
+        int puntosActualizados = 0;
+        if (evento.venderEntradas(limite, tipo, nombre, dni, edad, puntosActualizados)) {
+            puntosActualizados = evento.obtenerPuntos(nombre, dni);
             System.out.println("Venta completa");
-            guardaTicket(nombre, dni, edad, limite);
+            guardaTicket(nombre, dni, edad, limite, puntosActualizados);
 
         } else {
             System.out.println("Venta no correcta");
@@ -71,7 +74,7 @@ public class App {
 
     }
 
-    public static void guardaTicket(String nombre, String dni, int edad, int entradas) {
+    public static void guardaTicket(String nombre, String dni, int edad, int entradas, int puntos) {
         File ficFile = new File("Ticket.txt");
         int ticketNumber = contarTickets(ficFile) + 1;
         try (BufferedWriter fw = new BufferedWriter(new FileWriter(ficFile, true))) {
@@ -79,6 +82,7 @@ public class App {
             fw.write("Nombre: " + nombre + System.lineSeparator());
             fw.write("Dni: " + dni + System.lineSeparator());
             fw.write("Edad: " + edad + System.lineSeparator());
+            fw.write("Puntos: " + puntos + System.lineSeparator());
             fw.write("Entradas Compardo: " + entradas + System.lineSeparator());
             fw.write("***************************" + System.lineSeparator());
             fw.write(System.lineSeparator());

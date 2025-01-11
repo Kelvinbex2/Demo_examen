@@ -22,3 +22,57 @@ Entradas Compardo: 8
 ***************************
 
 
+**********Ticket 4***********
+Nombre: hh
+Dni: g
+Edad: 5
+Puntos: 0
+Entradas Compardo: 7
+***************************
+
+
+**********Ticket 5***********
+Nombre: r
+Dni: f
+Edad: 66
+Puntos: 0
+Entradas Compardo: 8
+***************************
+
+
+**********Ticket 6***********
+Nombre: g
+Dni: f
+Edad: 7
+Puntos: 0
+Entradas Compardo: 3
+***************************
+
+
+**********Ticket 7***********
+Nombre: f
+Dni: f
+Edad: 6
+Puntos: 0
+Entradas Compardo: 6
+***************************
+
+
+**********Ticket 8***********
+Nombre: j
+Dni: h
+Edad: 7
+Puntos: 15
+Entradas Compardo: 8
+***************************
+
+
+**********Ticket 9***********
+Nombre: hh
+Dni: h
+Edad: 8
+Puntos: 15
+Entradas Compardo: 9
+***************************
+
+
