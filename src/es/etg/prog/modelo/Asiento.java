@@ -13,10 +13,6 @@ public class Asiento {
         this.ocupado = false;
     }
 
-    public Asiento() {
-
-    }
-
     public void asignar(String nombre, String dni, int edad, int puntos) {
         this.nombre = nombre;
         this.dni = dni;
